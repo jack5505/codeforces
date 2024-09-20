@@ -49,10 +49,26 @@ public class C {
         if(even <= p){
             // todo need to test well
             int need = evenline - even;
-            boolean otherResponse = (need == 0);
             odd -= 2 * need;
-            if(notevenline > odd || (odd % 2 == 0 && notevenline % 2 != 0)){
+            if(notevenline > odd || (odd % 2 == 0 && notevenline % 2 != 0) || ( odd % 2 != 0 && notevenline % 2 == 0)){
                 System.out.println("NO");
+                return;
+            }
+            if(k == p && need == 0){
+                System.out.println("YES");
+                List<Integer> last = new ArrayList<>();
+                for(int i = 0 ; i < n ;i ++){
+                    if(a[i] % 2 == 0 && p > 1){
+                        System.out.println(1 + " " + a[i]);
+                        p --;
+                    }else{
+                        last.add(a[ i ]);
+                    }
+                }
+                System.out.print(last.size() + " ");
+                for(Integer item : last){
+                    System.out.print(item + " ");
+                }
                 return;
             }
             //TODO need to think it
@@ -61,7 +77,7 @@ public class C {
             {
                 if(a[i] % 2 == 0)
                 {
-                    System.out.println(1 + " " + a[i]);
+                        System.out.println(1 + " " + a[i]);
                 }
             }
             List<Integer> oddAll = new ArrayList<>();
@@ -130,11 +146,13 @@ public class C {
                 }
                 return;
             }
-            System.out.print(evenLast.size() + " ");
-            for(Integer e : evenLast){
-                System.out.print(e + " ");
-             }
-            System.out.println();
+            if(evenLast.size() >= 1) {
+                System.out.print(evenLast.size() + " ");
+                for (Integer e : evenLast) {
+                    System.out.print(e + " ");
+                }
+                System.out.println();
+            }
             i = 0;
             for(i = 0; i < oddList.size(); i ++)
             {
