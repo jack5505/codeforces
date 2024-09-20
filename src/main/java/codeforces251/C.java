@@ -13,6 +13,15 @@ public class C {
      *
      * 7 5 2
      * 2 4 7 9 13 15 17
+     *
+     * 6 3 1
+     * 2 4 6 8 7 9
+     *
+      5 2 2
+      316313049 24390603 595539594 514135024 39108
+     *
+     * 4 2 2
+     * 736788713 82230 66800 37791827
      */
     public static void main(String[] args) {
         // juft soni massivni  p dan katta bo`lishi garak
@@ -38,7 +47,9 @@ public class C {
         int evenline = p;
         int notevenline = k - p;
         if(even <= p){
+            // todo need to test well
             int need = evenline - even;
+            boolean otherResponse = (need == 0);
             odd -= 2 * need;
             if(notevenline > odd || (odd % 2 == 0 && notevenline % 2 != 0)){
                 System.out.println("NO");
@@ -83,7 +94,61 @@ public class C {
                 System.out.print(oddAll.get(i) + " ");
             }
         }else{
-
+            //
+            //5 2 2
+            //316313049 24390603 595539594 514135024 39108
+            // bu holatd juftla ko`p berda
+            int oddLine = k - p;
+            if(oddLine > odd || (odd %  2 == 0 && oddLine % 2 != 0) || (odd % 2 != 0 && oddLine % 2 == 0)){
+                System.out.println("NO");
+                return;
+            }
+            System.out.println("YES");
+            List<Integer> oddList = new ArrayList<>();
+            List<Integer> evenLast = new ArrayList<>();
+            int i = 0;
+            for ( i = 0; i < n; i++)
+            {
+                if(a[i] % 2 == 0 && p >= 1)
+                {
+                    if(p > 1) {
+                        System.out.println(1 + " " + a[i]);
+                        p--;
+                    }else
+                        evenLast.add( a[i] );
+                }else{
+                    oddList.add( a[i] );
+                }
+            }
+            if(oddLine == 0){
+                System.out.print(evenLast.size() + oddList.size() + " ");
+                for(Integer e: evenLast){
+                    System.out.print(e + " ");
+                }
+                for(Integer e: oddList){
+                    System.out.print(e + " ");
+                }
+                return;
+            }
+            System.out.print(evenLast.size() + " ");
+            for(Integer e : evenLast){
+                System.out.print(e + " ");
+             }
+            System.out.println();
+            i = 0;
+            for(i = 0; i < oddList.size(); i ++)
+            {
+                if(oddLine > 1)
+                {
+                    System.out.println(1 + " " + oddList.get(i));
+                    oddLine --;
+                }else
+                    break;
+            }
+            System.out.print(oddList.size() - i + " ");
+            for( ; i < oddList.size() ; i++){
+                System.out.print(oddList.get(i) + " ");
+            }
 
         }
     }
