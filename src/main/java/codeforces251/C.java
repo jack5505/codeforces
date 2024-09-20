@@ -37,7 +37,7 @@ public class C {
         }
         int evenline = p;
         int notevenline = k - p;
-        if(even < p){
+        if(even <= p){
             int need = evenline - even;
             odd -= 2 * need;
             if(notevenline > odd || (odd % 2 == 0 && notevenline % 2 != 0)){
@@ -56,12 +56,12 @@ public class C {
             List<Integer> oddAll = new ArrayList<>();
             for (int i = 0; i < n; i++)
             {
-                if(a[i] % 2 != 0 && notevenline >= 1)
+                if(a[i] % 2 != 0  && (( notevenline >= 1 && need > 0) || ( need == 0 && notevenline > 1)))
                 {
                     System.out.println(1 + " " + a[i]);
                     notevenline --;
                 }
-                else if(a[i] % 2 != 0 && notevenline == 0){
+                else if(a[i] % 2 != 0 && ((need == 0 && notevenline == 1) || (need >= 1 && notevenline == 0 ))){
                     oddAll.add( a[i] );
                 }
             }
@@ -75,7 +75,7 @@ public class C {
                     System.out.println(2 + " " + oddAll.get(i - 1) + " " + oddAll.get(i));
                     need --;
                 }
-                else if(need == 1)
+                else if(need == 1 || need == 0)
                     break;
             }
             System.out.print(oddAll.size() - i + " ");
@@ -83,7 +83,7 @@ public class C {
                 System.out.print(oddAll.get(i) + " ");
             }
         }else{
-            
+
 
         }
     }
